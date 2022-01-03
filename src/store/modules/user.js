@@ -75,12 +75,6 @@ const actions = {
     // 清空 storage
     auth.logout()
     commit('resetState')
-  },
-
-  async flushLogout ({ commit }) {
-    // 清空 storage
-    auth.logout()
-    commit('resetState')
   }
 }
 
