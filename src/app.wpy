@@ -28,9 +28,10 @@ wepy.app({
 {
   pages: [
     'pages/index',
-    'pages/user',
     'pages/auth/login',
-    'pages/auth/register'
+    'pages/auth/register',
+    'pages/users/me',
+    'pages/users/edit',
   ],
   window: {
     backgroundTextStyle: 'light',
@@ -45,7 +46,7 @@ wepy.app({
       iconPath: 'assets/images/index.png',
       selectedIconPath: 'assets/images/index_selected.png'
     }, {
-      pagePath: 'pages/user',
+      pagePath: 'pages/users/me',
       text: '我的',
       iconPath: 'assets/images/user.png',
       selectedIconPath: 'assets/images/user_selected.png'
