@@ -85,7 +85,7 @@
     computed: {
       ...mapGetters(['user', 'isLoggedIn'])
     },
-    onLoad() {
+    async onLoad() {
       this.checkLogin()
     },
     methods: {
