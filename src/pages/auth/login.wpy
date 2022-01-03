@@ -99,9 +99,9 @@
             this.errorMessage = data.msg
           }
         })
-    },
+      },
       // 表单提交
-    async submit() {
+      async submit() {
         this.error = {}
         // 提交时重置错误
         if (!this.validatorInstance.checkData(this.form)) {

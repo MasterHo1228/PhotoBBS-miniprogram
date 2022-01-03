@@ -31,17 +31,17 @@
   wepy.page({
     store,
     computed: {
-      ...mapGetters(['user','isLoggedIn'])
+      ...mapGetters(['user', 'isLoggedIn'])
     },
-    onLoad(){
+    onLoad() {
       var expireTime = new Date(wx.getStorageSync('access_token_expired_at')).getTime()
       var currentTime = new Date().getTime()
 
-      console.log('expireTime:'+expireTime)
-      console.log('currentTime:'+currentTime)
+      console.log('expireTime:' + expireTime)
+      console.log('currentTime:' + currentTime)
 
-      //检测token是否过期，若过期自动重置登录状态
-      if (currentTime > expireTime){
+      // 检测token是否过期，若过期自动重置登录状态
+      if (currentTime > expireTime) {
         this.logout()
       }
     },

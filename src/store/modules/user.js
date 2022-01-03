@@ -1,5 +1,5 @@
 import wepy from '@wepy/core'
-import { login,logout,refresh,register } from '@/api/auth'
+import { login, logout, refresh, register } from '@/api/auth'
 import * as auth from '@/utils/auth'
 import isEmpty from 'lodash/isEmpty'
 import { getCurrentUser } from '@/api/user'

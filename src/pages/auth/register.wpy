@@ -101,7 +101,7 @@
 <script>
   import wepy from '@wepy/core'
   import store from '@/store'
-  import { getCaptcha,getVerificationCode } from '@/api/auth'
+  import { getCaptcha, getVerificationCode } from '@/api/auth'
   import WeValidator from 'we-validator'
 
   wepy.page({
@@ -122,13 +122,13 @@
       // 表单错误
       errors: {},
       // 短信验证码 key 及过期时间
-      verificationCode: {},
+      verificationCode: {}
     },
-    onReady(){
+    onReady() {
       this.initValidator()
     },
     methods: {
-      initValidator(){
+      initValidator() {
         this.phoneValidatorInstance = new WeValidator({
           rules: {
             phone: {
@@ -195,7 +195,7 @@
       // 响应获取图片验证码按钮点击事件
       async getCaptchaCode() {
         this.errors = {}
-        if(!this.phoneValidatorInstance.checkData(this.form)) {
+        if (!this.phoneValidatorInstance.checkData(this.form)) {
           return
         }
 
@@ -245,7 +245,6 @@
           this.captchaModalShow = false
           // 手机输入框 disabled
           this.phoneDisabled = true
-
         } catch (err) {
           // 验证码错误提示
           this.$set(this.errors, 'captchaValue', err.response.data.message)
