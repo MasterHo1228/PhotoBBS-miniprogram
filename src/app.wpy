@@ -28,6 +28,7 @@ wepy.app({
 {
   pages: [
     'pages/topics/index',
+    'pages/topics/show',
     'pages/auth/login',
     'pages/auth/register',
     'pages/users/me',
