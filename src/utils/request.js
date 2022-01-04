@@ -6,6 +6,11 @@ const host = 'http://photobbs.app/api/v1/'
 
 // 普通请求
 const request = async (url, options = {}, showLoading = true) => {
+  if (typeof options === 'string') {
+    options = {
+      url: options
+    }
+  }
   // 显示加载中
   if (showLoading) {
     wx.showLoading({title: '加载中'})
