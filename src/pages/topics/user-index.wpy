@@ -5,7 +5,6 @@
 </template>
 <config>
   {
-    navigationBarTitleText: 'Ta 发布的话题',
     enablePullDownRefresh: true,
     usingComponents: {
       "topic-list": "~@/components/topic-list"
@@ -26,10 +25,30 @@
       // 是否在加载中
       isLoading: false,
       // 用户 id
-      userId: 0
+      userId: 0,
+      //记录进入页面来源
+      from: null,
+      //页面标题
+      title: null
     },
     async onLoad(options) {
       this.userId = options.id
+      console.log(options.from)
+      this.from = options.from
+
+      //根据获取到的打开来源定义页面标题
+      switch (this.from){
+        case 'me':
+          this.title = '我的话题'
+          break
+        case 'topic':
+          this.title = 'Ta 发布的话题'
+          break
+      }
+      wx.setNavigationBarTitle({
+        title: this.title
+      })
+
       this.loadTopics()
     },
     async onPullDownRefresh() {
