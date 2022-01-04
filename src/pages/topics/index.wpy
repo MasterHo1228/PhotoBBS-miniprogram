@@ -137,7 +137,7 @@
         this.page = 1
 
         // 设置 reset 为 true
-        this.loadTopics(true)
+        this.loadData(true)
       },
       async loadCategories() {
         // 从缓存中获取分类数据
