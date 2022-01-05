@@ -16,34 +16,22 @@
   import { getUserTopics } from '@/api/topic'
   import listRefresh from '@/mixins/list-refresh.js'
   import eventHub from '@/common/eventHub'
+  import linkFrom from '@/mixins/link-from.js'
 
   wepy.page({
-    mixins: [ listRefresh ],
+    mixins: [ listRefresh,linkFrom ],
     data: {
       // 用户 id
-      userId: 0,
-      //记录进入页面来源
-      from: null,
-      //页面标题
-      title: null
+      userId: 0
     },
     async onLoad(options) {
       this.userId = options.id
-      this.from = options.from
 
-      //根据获取到的打开来源定义页面标题
-      switch (this.from){
-        case 'me':
-          this.title = '我的话题'
-          break
-        case 'topic':
-        case 'user-show':
-          this.title = 'Ta 发布的话题'
-          break
-      }
-      wx.setNavigationBarTitle({
-        title: this.title
-      })
+      //抓取打开来源，修改标题
+      this.from = options.from
+      this.titleKey = '话题'
+      this.changeTitleName()
+
       eventHub.$on('topic-deleted', (topic) => {
         this.page = 1
         this.noMoreData = false
