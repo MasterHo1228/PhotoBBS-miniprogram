@@ -36,6 +36,7 @@
           this.title = '我的话题'
           break
         case 'topic':
+        case 'user-show':
           this.title = 'Ta 发布的话题'
           break
       }
