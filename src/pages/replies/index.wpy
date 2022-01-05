@@ -5,6 +5,7 @@
         <reply-list :replies="resourceData" :no-more-data ="noMoreData"></reply-list>
       </div>
     </div>
+    <reply-create-link :topicId="topic.id"></reply-create-link>
   </div>
 </template>
 <config>
@@ -12,7 +13,8 @@
     navigationBarTitleText: '评论列表',
     enablePullDownRefresh: true,
     usingComponents:  {
-        "reply-list": "~@/components/reply-list"
+        "reply-list": "~@/components/reply-list",
+        "reply-create-link": "~@/components/reply-create-link"
     }
   }
 </config>
@@ -31,6 +33,12 @@
       // 获取 URL 参数中的 话题id
       this.topicId = options.topic_id
       this.loadData()
+
+      eventHub.$on('reply-created', (...args) => {
+        this.page = 1
+        this.noMoreData = false
+        this.loadData(true)
+      });
     },
     methods: {
       fetchData() {
