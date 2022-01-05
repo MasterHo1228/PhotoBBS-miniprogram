@@ -40,7 +40,7 @@
         <div class="weui-media-box__info topic-info">
           <div class="weui-media-box__info__meta">{{ topic.category.name }} • </div>
           <div class="weui-media-box__info__meta"><datetime-diff :datetime="topic.updated_at"></datetime-diff> • </div>
-          <div class="weui-media-box__info__meta">{{ topic.reply_count }} 次回复</div>
+          <div class="weui-media-box__info__meta">{{ topic.reply_count }} 个评论</div>
         </div>
       </div>
       <div class="weui-article">
