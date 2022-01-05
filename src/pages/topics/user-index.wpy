@@ -15,6 +15,7 @@
   import wepy from '@wepy/core'
   import { getUserTopics } from '@/api/topic'
   import listRefresh from '@/mixins/list-refresh.js'
+  import eventHub from '@/common/eventHub'
 
   wepy.page({
     mixins: [ listRefresh ],
@@ -42,6 +43,11 @@
       }
       wx.setNavigationBarTitle({
         title: this.title
+      })
+      eventHub.$on('topic-deleted', (topic) => {
+        this.page = 1
+        this.noMoreData = false
+        this.loadData(true)
       })
 
       this.loadData()
