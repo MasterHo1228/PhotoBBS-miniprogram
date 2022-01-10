@@ -25,3 +25,7 @@ export function updateAvatar(avatar) {
     filePath: avatar
   })
 }
+
+export function getPerms() {
+  return authRequest('user/permissions')
+}

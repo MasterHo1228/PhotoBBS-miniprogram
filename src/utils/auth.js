@@ -22,6 +22,14 @@ export function setToken(tokenPayload) {
   wx.setStorageSync('access_token_expired_at', accessTokenExpiredAt)
 }
 
+export function getPerms() {
+  return wx.getStorageSync('perms')
+}
+
+export function setPerms(perms) {
+  return wx.setStorageSync('perms', perms)
+}
+
 export function logout() {
   return wx.clearStorage()
 }

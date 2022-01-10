@@ -32,7 +32,8 @@
           return false
         }
 
-        return this.user.id === this.reply.user_id
+        // 判断当前用户是否为评论的发布者，或者具有管理内容的权限
+        return (this.user.id === this.reply.user_id) || this.$app.can('manage_contents')
       }
     },
     methods: {
