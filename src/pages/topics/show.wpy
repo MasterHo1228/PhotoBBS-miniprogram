@@ -55,7 +55,7 @@
         <rich-text :nodes="topic.body"></rich-text>
         <button v-if="canDelete" @tap="deleteTopic" class="weui-btn weui-btn_mini delete-button" type="default" size="mini">删除</button>
       </div>
-      <!-- 话题回复 -->
+      <!-- 话题评论 -->
       <div class="weui-panel weui-panel_access" v-if="topic.reply_count">
         <div class="weui-panel__hd">评论 ({{ topic.reply_count }})</div>
         <div class="weui-panel__bd">
@@ -69,6 +69,7 @@
                 <div class="weui-media-box__desc"><rich-text nodes="{{ reply.content }}" bindtap="tap"></rich-text></div>
                 <div class="weui-media-box__desc"><datetime-diff :datetime="reply.created_at"></datetime-diff></div>
               </div>
+              <reply-delete :reply="reply"></reply-delete>
             </div>
           </div>
         </div>
@@ -89,7 +90,8 @@
     navigationBarTitleText: '话题详情',
     usingComponents: {
       "datetime-diff": "~@/components/datetime-diff",
-      "reply-create-link": "~@/components/reply-create-link"
+      "reply-create-link": "~@/components/reply-create-link",
+      "reply-delete": "~@/components/reply-delete"
     }
   }
 </config>
@@ -118,12 +120,16 @@
         return this.user.id === this.topic.user_id
       }
     },
-    onLoad(options) {
+    async onLoad(options) {
       this.loadTopic(options.id)
 
       eventHub.$on('reply-created', (...args) => {
         this.loadTopic(options.id)
       });
+
+      eventHub.$on('reply-deleted', (reply) => {
+        this.loadTopic(options.id)
+      })
     },
     methods: {
       // 获取话题数据
