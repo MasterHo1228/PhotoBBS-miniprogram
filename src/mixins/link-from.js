@@ -1,19 +1,19 @@
 export default {
-  data:{
-    //记录进入页面来源
+  data: {
+    // 记录进入页面来源
     from: null,
-    //页面标题
+    // 页面标题
     titlePrefix: null,
-    //标题关键字
+    // 标题关键字
     titleKey: null,
-    //完整标题
+    // 完整标题
     fullTitle: null
   },
-  methods:{
-    changeTitleName(){
-      if(this.from && this.titleKey){
-        //根据获取到的打开来源定义页面标题
-        switch (this.from){
+  methods: {
+    changeTitleName() {
+      if (this.from && this.titleKey) {
+        // 根据获取到的打开来源定义页面标题
+        switch (this.from) {
           case 'me':
             this.titlePrefix = '我的'
             break
@@ -22,7 +22,7 @@ export default {
             break
         }
 
-        //拼接标题文字并设置
+        // 拼接标题文字并设置
         this.fullTitle = this.titlePrefix + this.titleKey
         wx.setNavigationBarTitle({
           title: this.fullTitle

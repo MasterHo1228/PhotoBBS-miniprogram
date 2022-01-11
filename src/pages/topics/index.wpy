@@ -95,6 +95,7 @@
   import store from '@/store'
 
   wepy.page({
+    store,
     mixins: [ listRefresh ],
     data: {
       // 分类数据

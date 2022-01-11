@@ -124,7 +124,7 @@
             },
             email: {
               email: '邮箱格式不正确'
-            },
+            }
           },
           onMessage: (data) => {
             let errors = {}
@@ -151,7 +151,6 @@
             icon: 'success',
             duration: 2000
           })
-
         } catch (err) {
           // 设置报错信息
           if (err.response.statusCode === 422) {
@@ -176,9 +175,8 @@
 
           this.form = Object.assign({}, this.form, {'avatar': responseData.path, 'avatar_image_id': responseData.id})
 
-          //上传图片成功后，同步更新用户信息
+          // 上传图片成功后，同步更新用户信息
           await this.$store.dispatch('updateUser', this.form)
-
         } catch (err) {}
       }
     }

@@ -73,7 +73,6 @@ const actions = {
   },
 
   async updateUser ({ commit }, params = {}) {
-
     const editResponse = await updateUser(params)
 
     commit('setUser', editResponse.data)

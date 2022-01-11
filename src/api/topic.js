@@ -1,4 +1,4 @@
-import { request,authRequest } from '@/utils/request'
+import { request, authRequest } from '@/utils/request'
 
 export function getTopics(data) {
   return request('topics', {
@@ -17,7 +17,7 @@ export function getTopic(id, data) {
 }
 
 export function getUserTopics(userId, data) {
-  return request('users/'+userId+'/topics', {
+  return request('users/' + userId + '/topics', {
     data: data
   })
 }

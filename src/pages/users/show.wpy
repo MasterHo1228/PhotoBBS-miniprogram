@@ -78,11 +78,10 @@
         // 路径为用户详情
         path: '/pages/users/show?id=' + this.user.id,
         // 图片为用户头像
-        imageUrl: this.user.avatar,
+        imageUrl: this.user.avatar
       }
     },
     async onLoad(options) {
-
       const userResponse = await getUser(options.id)
 
       this.user = userResponse.data

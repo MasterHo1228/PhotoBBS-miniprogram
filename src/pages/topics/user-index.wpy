@@ -19,7 +19,7 @@
   import linkFrom from '@/mixins/link-from.js'
 
   wepy.page({
-    mixins: [ listRefresh,linkFrom ],
+    mixins: [ listRefresh, linkFrom ],
     data: {
       // 用户 id
       userId: 0
@@ -27,7 +27,7 @@
     async onLoad(options) {
       this.userId = options.id
 
-      //抓取打开来源，修改标题
+      // 抓取打开来源，修改标题
       this.from = options.from
       this.titleKey = '话题'
       this.changeTitleName()
@@ -42,8 +42,7 @@
     },
     methods: {
       async fetchData() {
-
-        // 请求用户话题列表接口
+      // 请求用户话题列表接口
         return getUserTopics(this.userId, {
           page: this.page,
           include: 'user,category'

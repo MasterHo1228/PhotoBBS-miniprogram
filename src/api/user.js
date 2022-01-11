@@ -5,7 +5,7 @@ export function getCurrentUser(data) {
 }
 
 export function getUser(id) {
-  return request('users/'+id)
+  return request('users/' + id)
 }
 
 export function updateUser(data) {

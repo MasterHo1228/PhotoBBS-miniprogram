@@ -19,20 +19,20 @@
   import linkFrom from '@/mixins/link-from.js'
 
   wepy.page({
-    mixins: [ listRefresh,linkFrom ],
+    mixins: [ listRefresh, linkFrom ],
     data: {
       // 话题 id
       userId: 0,
-      //记录进入页面来源
+      // 记录进入页面来源
       from: null,
-      //页面标题
+      // 页面标题
       title: null
     },
     async onLoad(options) {
       // 获取 URL 参数中的 话题id
       this.userId = options.id
 
-      //抓取打开来源，修改标题
+      // 抓取打开来源，修改标题
       this.from = options.from
       this.titleKey = '评论'
       this.changeTitleName()

@@ -101,15 +101,15 @@
         } catch (err) {}
       },
 
-      async checkLogin(){
-        try{
+      async checkLogin() {
+        try {
           var expireTime = new Date(wx.getStorageSync('access_token_expired_at')).getTime()
           var currentTime = new Date().getTime()
 
-          //调试埋点
-          //console.log('expireTime:' + expireTime)
-          //console.log('currentTime:' + currentTime)
-          if (currentTime > expireTime){
+          // 调试埋点
+          // console.log('expireTime:' + expireTime)
+          // console.log('currentTime:' + currentTime)
+          if (currentTime > expireTime) {
             await this.$store.dispatch('refresh')
           }
         } catch (err) {}

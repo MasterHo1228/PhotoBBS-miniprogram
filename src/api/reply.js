@@ -13,14 +13,14 @@ export function getUserReplies(userId, data) {
 }
 
 export function createReply(topicId, data) {
-  return authRequest('topics/'+ topicId +'/replies', {
+  return authRequest('topics/' + topicId + '/replies', {
     method: 'POST',
     data: data
   })
 }
 
 export function deleteReply(topicId, replyId) {
-  return authRequest('topics/' + topicId +'/replies/' + replyId, {
-    method: 'DELETE',
+  return authRequest('topics/' + topicId + '/replies/' + replyId, {
+    method: 'DELETE'
   })
 }
