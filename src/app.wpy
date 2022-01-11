@@ -19,6 +19,7 @@ wepy.app({
   async onLaunch() {
     this.$store = this.$options.store;
     this.updateUnreadCount()
+    this.checkToken()
 
     setInterval(() => {
       this.updateUnreadCount()
@@ -39,6 +40,20 @@ wepy.app({
       }
 
       return false
+    },
+    async checkToken(){
+      // 从缓存中取出 Token
+      const accessToken = this.$store.getters.accessToken
+      const expiredAt = this.$store.getters.accessTokenExpiredAt
+
+      // 如果 token 过期了，则调用刷新方法
+      if (accessToken && new Date().getTime() > expiredAt) {
+        try {
+          return store.dispatch('refresh')
+        } catch (err) {
+          return store.dispatch('login')
+        }
+      }
     }
   }
 })
